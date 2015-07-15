@@ -1,0 +1,5 @@
+{
+  "preset": "airbnb",
+  "requireCamelCaseOrUpperCaseIdentifiers": "ignoreProperties",
+  "excludeFiles": [ "external", "src/intro.js", "src/outro.js"]
+}
