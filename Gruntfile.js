@@ -25,13 +25,12 @@ module.exports = function(grunt) {
     jshint: {
       all: {
         src: [
-          'src/**/*.js', 'Gruntfile.js', 'test/**/*.js', 'build/**/*.js'
+          'Gruntfile.js', 'src/**/*.js', 'build/**/*.js', 'test/**/*.js'
         ]
       }
     },
     jscs: {
-      src: 'src/**/*.js',
-      gruntfile: 'Gruntfile.js',
+      src: ['Gruntfile.js', 'src/**/*.js', 'build/**/*.js', 'test/**/*.js'],
 
       // Check parts of tests that pass
       // release: ['build/*.js', '!build/release-notes.js'],
@@ -57,8 +56,7 @@ module.exports = function(grunt) {
           beautify: {
             ascii_only: true
           },
-          banner: '/*! base v<%= pkg.version %> | ' +
-          '(c) FDD Foundation | fangdd.com/license */',
+          banner: '/*! base v<%= pkg.version %> */',
           compress: {
             hoist_funs: false,
             loops: false,

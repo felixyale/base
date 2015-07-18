@@ -4,27 +4,19 @@
 * Date: @DATE
 */
 
-(function(global, factory) {
-
-  if ( typeof module === "object" && typeof module.exports === "object" ) {
-    // For CommonJS and CommonJS-like environments where a proper `window`
-    // is present, execute the factory and get base.
-    // For environments that do not have a `window` with a `document`
-    // (such as Node.js), expose a factory as module.exports.
-    // This accentuates the need for the creation of a real `window`.
-    // e.g. var base = require("base")(window);
-    module.exports = global.document ?
-    factory(require('jquery'), true) :
-    function( w ) {
-      if ( !w.document ) {
-        throw new Error( "base requires a window with a document" );
-      }
-      return module.exports = factory(require('jquery'));
-    };
-  } else if (typeof define === 'function' && define.amd) {
-    define(['jquery'], factory);
+(function (root, factory) {
+  if (typeof define === "function" && define.amd) {
+    // Now we're wrapping the factory and assigning the return
+    // value to the root (window) and returning it as well to
+    // the AMD loader.
+    define(["jquery"], factory);
+  } else if (typeof module === "object" && module.exports) {
+    // I've not encountered a need for this yet, since I haven't
+    // run into a scenario where plain modules depend on CommonJS
+    // *and* I happen to be loading in a CJS browser environment
+    // but I'm including it for the sake of being thorough
+    module.exports = factory(require("jquery"));
   } else {
-    global.returnExports = factory(global.jQuery);
+    root.base = root.$$ = factory(root.jQuery);
   }
-  // Pass this if window is not defined yet
 }(this, function($) {
