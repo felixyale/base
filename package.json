@@ -36,6 +36,8 @@
   },
   "commitplease": {
     "components": [
+      "backbone",
+      "cookie",
       "getParameterByName"
     ]
   }

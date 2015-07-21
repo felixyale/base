@@ -75,6 +75,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('lint', ['jsonlint', 'jshint', 'jscs']);
 
-  grunt.registerTask('default', ['build:all:*', 'lint', 'uglify']);
+  grunt.registerTask('default', ['lint', 'build:all:*', 'uglify']);
 
 };
