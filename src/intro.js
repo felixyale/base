@@ -17,6 +17,6 @@
     // but I'm including it for the sake of being thorough
     module.exports = factory(require('underscore'), require('Backbone'), require('jquery'));
   } else {
-    root.base = root.$$ = factory(root.jQuery);
+    root.base = root.$$ = factory(root.underscore, root.Backbone, root.jQuery);
   }
-}(this, function($) {
+}(this, function(_, Backbone, $) {
