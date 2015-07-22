@@ -40,8 +40,18 @@ module.exports = function(grunt) {
       }
     },
     watch: {
-      files: ['<%= jshint.all.src %>'],
-      tasks: ['dev']
+      jshint: {
+        files: ['<%= jshint.all.src %>'],
+        tasks: ['jshint']
+      },
+      jscs: {
+        files: ['Gruntfile.js', 'src/**/*.js', 'build/**/*.js', 'test/**/*.js'],
+        tasks: ['jscs']
+      },
+      build: {
+        files: ['src/**/*.js'],
+        tasks: ['build:all:*']
+      }
     },
     uglify: {
       all: {
@@ -74,6 +84,8 @@ module.exports = function(grunt) {
   grunt.loadTasks('build/tasks');
 
   grunt.registerTask('lint', ['jsonlint', 'jshint', 'jscs']);
+
+  grunt.registerTask('dev', ['watch']);
 
   grunt.registerTask('default', ['lint', 'build:all:*', 'uglify']);
 

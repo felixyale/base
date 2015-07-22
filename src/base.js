@@ -1,8 +1,7 @@
 define([
   './core',
   './core/getParameterByName',
-  './core/cookie',
-  './core/backbone'
+  './core/cookie'
 ], function(base) {
 
 });
