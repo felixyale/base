@@ -53,6 +53,22 @@ module.exports = function(grunt) {
         tasks: ['build:all:*']
       }
     },
+    less: {
+      options: {
+        // the banner is inserted at the top of the output
+        banner: '/*! core.css <%= grunt.template.today("dd-mm-yyyy") %> */\n',
+        compress: true,
+        sourceMap: true,
+        sourceMapURL: 'core.css.map',
+        sourceMapRootpath: '../',
+        dumpLineNumbers: 'comments'
+      },
+      dist: {
+        files: {
+          'dist/core.css': ['less/bootstrap.less']
+        }
+      }
+    },
     uglify: {
       all: {
         files: {
@@ -87,6 +103,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('dev', ['watch']);
 
-  grunt.registerTask('default', ['lint', 'build:all:*', 'uglify']);
+  grunt.registerTask('default', ['lint', 'build:all:*', 'less', 'uglify']);
 
 };
